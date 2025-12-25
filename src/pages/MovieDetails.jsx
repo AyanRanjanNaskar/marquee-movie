@@ -89,7 +89,7 @@ const MovieDetails = () => {
     <div className="mx-8">
       <Navbar/>
       <div className='movie-card lg:flex gap-8'>
-        <img src={poster_path?`https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title} className="w-[500px] h-[700px] object-cover sm:w-auto" />
+        <img src={poster_path?`https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title} className="w-[300px] h-[500px] object-cover sm:w-auto" />
         <div className='mt-4'>
             <h2>{title}</h2>
             <p className="overview text-gray-500 w-auto mt-4">{overview}</p>
