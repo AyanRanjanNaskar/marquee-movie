@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import Navbar from "../components/Navbar";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -47,7 +50,30 @@ const MovieDetails = () => {
   
 
 
-  if (isLoading) return <Spinner/>;
+  if (isLoading) {
+    return (
+      <div className="mx-8 mt-8">
+        <Navbar />
+  
+        <div className="bg-gray-800 w-full max-w-5xl p-6 rounded-lg mt-6">
+          <Skeleton height={64} width="60%" />
+  
+          <div className="mt-4 space-y-2">
+            <Skeleton height={16} />
+            <Skeleton height={16} />
+            <Skeleton height={16} width="80%" />
+          </div>
+  
+          <div className="mt-6 space-y-2">
+            <Skeleton height={16} width="40%" />
+            <Skeleton height={16} width="50%" />
+            <Skeleton height={16} width="30%" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
   if (!movie) return null;
 
   const {
