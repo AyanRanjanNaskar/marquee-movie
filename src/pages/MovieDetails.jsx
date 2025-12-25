@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
+import Navbar from "../components/Navbar";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -55,24 +56,27 @@ const MovieDetails = () => {
     poster_path,
     release_date,
     original_language,
+    overview,
   } = movie;
 
   return (
-    <div className='movie-card'>
-        <img src={poster_path?`https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title} />
+    <div className="mx-8">
+      <Navbar/>
+      <div className='movie-card lg:flex gap-8'>
+        <img src={poster_path?`https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title} className="w-[500px] h-[700px] object-cover sm:w-auto" />
         <div className='mt-4'>
-            <h3>{title}</h3>
-            <div className="content">
+            <h2>{title}</h2>
+            <p className="overview text-gray-500 w-auto mt-4">{overview}</p>
+            <div className="content flex flex-col justify-start items-start gap-4">
+                <p className="lang">Language : {original_language}</p>
+                <p className="year">Release Date : {release_date ? release_date: 'N/A'}</p>
                 <div className="rating">
-                    <img src="star.svg" alt="Star Icon" />
-                    <p>{vote_average? vote_average.toFixed(1): 'N/A'}</p>
+                  <img src="/star.svg" alt="Star Icon" />
+                    <p> {vote_average? vote_average.toFixed(1): 'N/A'}</p>
                 </div>
-                <span>•</span>
-                <p className="lang">{original_language}</p>
-                <span>•</span>
-                <p className="year">{release_date ? release_date.split('-')[0] : 'N/A'}</p>
             </div>
         </div>
+    </div>
     </div>
   );
 };
