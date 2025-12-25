@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
-import Search from "./components/Search";
-import Spinner from "./components/Spinner";
-import MovieCard from "./components/MovieCard";
+import Search from "../components/Search";
+import Spinner from "../components/Spinner";
+import MovieCard from "../components/MovieCard";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -16,7 +16,7 @@ const API_OPTIONS = {
 	},
 };
 
-const App = () => {
+const HomePage = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [movieList, setMovieList] = useState([]);
@@ -131,4 +131,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default HomePage;
